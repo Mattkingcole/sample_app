@@ -40,3 +40,12 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 end
+
+# This file is copied to spec/ when you run 'rails generate rspec:install'
+
+RSpec.configure do |config|
+  
+  
+  config.include Capybara::DSL
+end
+
