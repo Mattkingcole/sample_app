@@ -50,7 +50,7 @@ it "should have the right links on the layout" do
     click_link "About"
     expect(page).to have_title(full_title('About Us'))
     click_link "Help"
-    expect(page).to have_title(full_title('Help'))
+    expect(page).to have_title(full_title('"Ruby on Rails Tutorial Sample App | Help"'))
     click_link "Contact"
     expect(page).to have_title(full_title('Contact'))
     click_link "Home"
