@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :restrict_registration, only: [:new, :create]
   before_action :signed_in_user, only: [:index, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
@@ -9,6 +10,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
 
   def new
@@ -68,5 +70,9 @@ def create
 
 def admin_user
       redirect_to(root_url) unless current_user.admin?
+    end
+
+def restrict_registration
+       redirect_to root_url, notice: "You are already regsitered." if signed_in?
     end
 end
